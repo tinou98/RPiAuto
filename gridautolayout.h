@@ -7,12 +7,25 @@
 #include <QLabel>
 
 
-class GridAutoItem : public QLabel {
+class GridAutoItem : public QWidget {
 public:
-    GridAutoItem(QString lbl, QPixmap logo) {
-        this->setText(lbl);
-        this->setPixmap(logo);
+	GridAutoItem(QString str, QPixmap logo) {
+		QLabel *lbl = new QLabel(); {
+			lbl->setPixmap(logo);
+			lbl->setAlignment(Qt::AlignCenter);
+		} lay.addWidget(lbl);
+
+
+		lbl = new QLabel(); {
+			lbl->setText(str);
+			lbl->setAlignment(Qt::AlignCenter);
+		} lay.addWidget(lbl);
+
+		this->setLayout(&this->lay);
     }
+
+private:
+	QVBoxLayout lay;
 };
 
 class GridAutoLayout : public QWidget {

@@ -12,5 +12,6 @@ GridAutoLayout::~GridAutoLayout() {
 #include <QLabel>
 void GridAutoLayout::addItem(QString lbl, QPixmap logo) {
     this->items.push_back(new GridAutoItem(lbl, logo));
+
     this->grid.addWidget(this->items.last());
 }
